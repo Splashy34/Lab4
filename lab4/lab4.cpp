@@ -42,25 +42,17 @@ public:
 		{
 			return;
 		}
+		if (index == size)
+		{
+			add(data);
+			return;
+		}
 		Node* newnode = new Node(data);
 		if (index == 0)
 		{
-			if (size == 0)
-			{
-				head = tail = cachedNode = newnode;
-				size++;
-				cachedIndex = 0;
-				return;
-			}
 			newnode->next = head;
 			head->prev = newnode;
 			head = newnode;
-		}
-		else if (index == size)
-		{
-			newnode->prev = tail;
-			tail->next = newnode;
-			tail = newnode;
 		}
 		else
 		{
@@ -92,17 +84,19 @@ public:
 				tail = nullptr;
 			}
 		}
-		else if (index == size - 1)
-		{
-			todel = tail;
-			tail = tail->prev;
-			tail->next = nullptr;
-		}
 		else
 		{
 			todel = getIndex(index);
+			if (todel == tail)
+			{
+				tail = tail->prev;
+				tail->next = nullptr;
+			}
+			else
+			{
 			todel->next->prev = todel->prev;
 			todel->prev->next = todel->next;
+			}
 		}
 		if (todel == cachedNode)
 		{
