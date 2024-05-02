@@ -82,6 +82,8 @@ public:
 			else
 			{
 				tail = nullptr;
+				cachedNode = nullptr;
+				cachedIndex = -1;
 			}
 		}
 		else
@@ -109,11 +111,6 @@ public:
 		}
 		delete todel;
 		size--;
-		if (size == 0)
-		{
-			cachedNode = nullptr;
-			cachedIndex = -1;
-		}
 	}
 
 	T elementAt(int index)
