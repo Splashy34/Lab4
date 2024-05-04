@@ -265,7 +265,7 @@ void SortedRegions(List<Info>& list)
 	for (int i = 0; i < temp.count(); ++i)
 	{
 		Info info = temp.elementAt(i);
-		cout << "Region: " << info.region << ", Total Population: " << info.population << endl;
+		cout << "Region: " << info.name << ", Total Population: " << info.population << endl;
 	}
 }
 
