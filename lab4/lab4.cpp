@@ -86,19 +86,17 @@ public:
 				cachedIndex = -1;
 			}
 		}
+		else if (index == size - 1)
+		{
+			todel = tail;
+			tail = tail->prev;
+			tail->next = nullptr;
+		}
 		else
 		{
 			todel = getIndex(index);
-			if (todel == tail)
-			{
-				tail = tail->prev;
-				tail->next = nullptr;
-			}
-			else
-			{
 			todel->next->prev = todel->prev;
 			todel->prev->next = todel->next;
-			}
 		}
 		if (todel == cachedNode)
 		{
@@ -149,7 +147,6 @@ public:
 			cachedIndex = index;
 		}
 	}
-
 
 private:
 	class Node
@@ -268,7 +265,7 @@ void SortedRegions(List<Info>& list)
 	for (int i = 0; i < temp.count(); ++i)
 	{
 		Info info = temp.elementAt(i);
-		cout << "Region: " << info.name << ", Total Population: " << info.population << endl;
+		cout << "Region: " << info.region << ", Total Population: " << info.population << endl;
 	}
 }
 
